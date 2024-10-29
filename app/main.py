@@ -4,12 +4,27 @@ from pydantic import BaseModel
 from tortoise import Tortoise
 from tortoise.contrib.fastapi import register_tortoise
 from models import Autos  
+from fastapi.middleware.cors import CORSMiddleware
 
 # Configuración de la URL de la base de datos PostgreSQL
-DATABASE_URL = "postgres://user:0m3WSxRjdRQMzFF28tWCyd2YoLBmyyXf@dpg-cscu2olumphs7399dqog-a.oregon-postgres.render.com/db_agenda_sd8j_u7mn"
-
+DATABASE_URL = "postgres://user:jwwHOKvKYUqfvsQHrAAIRC4Xh2Awzq3B@dpg-csgl3bij1k6c73cd03og-a.oregon-postgres.render.com/db_autos_sd8j"
+# postgresql://user:jwwHOKvKYUqfvsQHrAAIRC4Xh2Awzq3B@dpg-csgl3bij1k6c73cd03og-a.oregon-postgres.render.com/db_autos_sd8j
 # FastAPI app
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",  # Cambia esto según necesites
+    "https://secret-corpse-r57rj9q9x7gfwqq4.github.dev",
+    "https://secret-corpse-r57rj9q9x7gfwqq4-5500.app.github.dev"  # Agrega los dominios que necesites
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Permitir todos los métodos
+    allow_headers=["*"],  # Permitir todos los encabezados
+)
 
 # Pydantic model para los datos de Personas
 class AutoCreate(BaseModel):
