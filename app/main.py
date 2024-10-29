@@ -15,7 +15,8 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",  # Cambia esto según necesites
     "https://secret-corpse-r57rj9q9x7gfwqq4.github.dev",
-    "https://secret-corpse-r57rj9q9x7gfwqq4-5500.app.github.dev"  # Agrega los dominios que necesites
+    "https://secret-corpse-r57rj9q9x7gfwqq4-5500.app.github.dev",
+    "https://api-restweb.onrender.com"  # Agrega los dominios que necesites
 ]
 
 app.add_middleware(
